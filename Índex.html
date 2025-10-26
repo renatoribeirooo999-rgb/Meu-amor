@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Dia Que Mudou Tudo ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .couple-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .heart {
+            font-size: 80px;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .message {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .date {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: #666;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .message {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stars" id="stars"></div>
+        
+        <div class="photo-frame">
+            <img id="couplePhoto" src="./foto.jpg" alt="Nosso primeiro encontro" class="couple-photo">
+        </div>
+        
+        <div class="heart">❤️</div>
+        
+        <h1>O Dia Que Mudou Tudo</h1>
+        
+        <div class="message">
+            <p>Meu amor,</p>
+            <br>
+            <p>Lembro como se fosse hoje... O dia em que nossos caminhos se cruzaram e minha vida ganhou um <span class="highlight">novo significado</span>.</p>
+            <br>
+            <p>Desde aquele momento especial, cada dia ao seu lado tem sido uma <span class="highlight">aventura maravilhosa</span>. Você trouxe luz, amor e felicidade para a minha vida.</p>
+        </div>
+        
+        <div class="date">
+            📅 17 de Novembro de 2024
+        </div>
+        
+        <div class="message">
+            <p>Obrigado por existir, por me escolher e por tornar meus dias mais bonitos. Você é e sempre será o <span class="highlight">amor da minha vida</span>.</p>
+        </div>
+        
+        <div class="footer">
+            Com todo meu amor, hoje e sempre 💕
+        </div>
+    </div>
+
+    <script>
+        // Sistema de upload de foto
+        const img = document.getElementById('couplePhoto');
+        const fileInput = document.getElementById('photoUpload');
+        
+        // Clique na foto para fazer upload
+        img.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        // Quando selecionar uma foto
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    img.src = event.target.result;
+                    img.style.cursor = 'default';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Criar estrelinhas decorativas
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
